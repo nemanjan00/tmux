@@ -3,10 +3,10 @@
 
 HEART='♥ '
 
-source /sys/class/power_supply/BAT1/uevent
+source /sys/class/power_supply/BAT0/uevent
 
-current_charge=$POWER_SUPPLY_ENERGY_NOW
-total_charge=$POWER_SUPPLY_ENERGY_FULL
+current_charge=$POWER_SUPPLY_CHARGE_NOW
+total_charge=$POWER_SUPPLY_CHARGE_FULL
 
 charged_slots=$(echo "((($current_charge/$total_charge)*10)/3)+1" | bc -l | cut -d '.' -f 1)
 if [[ $charged_slots -gt 3 ]]; then
